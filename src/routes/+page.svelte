@@ -193,10 +193,10 @@
     }
 
     .project-link img {
-        width: 40px;
-        height: 40px;
+        width: 100%;
+        height: 100%;
     }
-    
+
     .project-desc {
         padding-top: 15px;
         padding-bottom: 15px;
@@ -206,8 +206,38 @@
         height: auto;
     }
 
+    .project-desc p {
+        margin-bottom: 20px;
+    }
+
+    .icons-container {
+        width: 100%;
+        height: 23px;
+
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .devicon  {
+        width: 100%;
+        height: 100%;
+
+        /* display: contents; */
+        font-size: 35px;
+        outline: none;
+
+        display: inline-block;
+
+        transition: color 0.3s ease-in-out;
+    }
+
+    /* .colored {
+        transition: color 0.3s ease-in-out;
+    } */
+
     .project-images {
-        margin-top: 30px;
+        margin-top: 40px;
 
         display: flex;
         flex-direction: row;
@@ -217,25 +247,22 @@
         overflow-y: hidden;
         
 
-        gap: 38px;
+        gap: 20px;
         height: 375px;
+    }
+
+    .project-image-wrap {
+        width: auto;
+        height: 100%;
     }
 
     .project-image {
         border: 1px solid #242424;
-
-        width: 400px;
-
         height: 100%;
-        max-width: 25%;
 
         object-fit: cover;
         object-position: left;
     }
-
-    /* * {
-        border: 1px solid red;
-    } */
 
     .image-background {
         width: 100vw;
@@ -274,13 +301,15 @@
 
         object-fit: contain;
     }
+
+
 </style>
 
 <link rel="stylesheet" href="src\styles\fullPhoto.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
 <script>
     import { quintInOut, quintOut } from 'svelte/easing';
-    import { crossfade } from 'svelte/transition';
     import { fade } from 'svelte/transition';
 
     function scrollToProjects() {
@@ -293,8 +322,22 @@
         "Chess Bot": {
             "Desc": "A Chess bot created using a combination of Selenium and Stockfish.",
             "Link": "https://github.com/Sw1ndlerScripts/ChessBot",
+            "Icons": {
+                "python": "https://www.python.org/",
+                "selenium": "https://www.selenium.dev/",
+            },
             "Images": ['/ChessBot/chess1.png', '/ChessBot/chess2.png', '/ChessBot/chess3.png', '/ChessBot/chess4.png', '/ChessBot/chess5.png' ]
         },
+        "Portfolio": {
+            "Desc": "A Portfolio website I created for my projects, you're looking at it right now",
+            "Link": "https://github.com/Sw1ndlerScripts/Portfolio",
+            "Icons": {
+                "svelte": "https://svelte.dev/",
+                "javascript": "https://www.javascript.com/",
+                "html5": "https://www.w3schools.com/html/",
+            },
+            "Images": []
+        }
     };
 
     let visible = false;
@@ -307,6 +350,35 @@
     function showImage(event) {
         imgSource = event.target.src;
         visible = true;
+    }
+
+    function horizontalScroll(event) {
+        const scrollContainer = event.currentTarget;
+
+        const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
+
+        // const isAtEnd = scrollLeft + clientWidth >= scrollWidth;
+        // if (isAtEnd && event.deltaY > 0) { return; }
+
+        event.preventDefault();
+        // scrollContainer.scrollLeft += event.deltaY;
+
+        let i = 0;
+        while (i <= 50) {
+            i++
+            setTimeout(() => {
+                scrollContainer.scrollLeft += (event.deltaY / 50);
+            }, 5 * i)
+        }
+    }
+
+    let hoveredIcon = ""
+
+    function iconMouseEnter(iconName) {
+        hoveredIcon = iconName;
+    }
+    function iconMouseLeave() {
+        hoveredIcon = "";
     }
 
 </script>
@@ -339,13 +411,13 @@
         </div>
 
         <div class='links'>
-            <a href='https://github.com/Sw1ndlerScripts' target="_blank"> <img class='link-icon' src='/icons/github.svg' alt='github'> </a>
-            <a href='https://discord.com/users/425797455486124032' target="_blank"> <img class='link-icon' src='/icons/discord.svg' alt='discord'> </a>
+            <a href='https://github.com/Sw1ndlerScripts' target="_blank"> <img class='link-icon' src='/Icons/github.svg' alt='github'> </a>
+            <a href='https://discord.com/users/425797455486124032' target="_blank"> <img class='link-icon' src='/Icons/discord.svg' alt='discord'> </a>
 
         </div>
     
         <button class='check-it-out' on:click={scrollToProjects}>
-            Check it out <img src="/icons/arrow.svg" alt='down_arrow' class='arrow'>
+            Check it out <img src="/Icons/arrow.svg" alt='down_arrow' class='arrow'>
         </button>
     </div>
 </div>
@@ -355,15 +427,38 @@
     
         <div class='project'>
             <div class='project-title'>
-                {projectName} <a href={project['Link']} class='project-link' target="_blank"> <img src="/icons/arrow.svg" alt='project-link'> </a>
+                {projectName} <a href={project['Link']} class='project-link' target="_blank"> <img src="/Icons/arrow.svg" alt='project-link'> </a>
             </div>
 
             <div class='project-desc'>
-                {project["Desc"]}
+                <!-- {project["Desc"]} -->
+                {#each project["Desc"].split('\n') as line}
+                    <p>{line}</p>
+                {/each}
 
-                <div class='project-images'>
+
+                <div class='icons-container'>
+                    {#each Object.entries(project["Icons"]) as [iconName, link]}
+                        <a 
+                            class="project-icon" 
+                            href={link} 
+                            target="_blank"
+                            on:mouseenter={() => iconMouseEnter(iconName)}
+                            on:mouseleave={iconMouseLeave}
+                        >
+                            <!-- <img class='icon' src="Icons/{icon["Image"]}" alt={iconName}> -->
+                            <i 
+                            class={hoveredIcon === iconName ? `devicon-${iconName}-plain devicon colored` : `devicon-${iconName}-plain devicon`}
+                            ></i>
+                        </a>
+                    {/each}
+                </div>
+
+                <div class='project-images' on:wheel={horizontalScroll}>
                     {#each project["Images"] as image}
-                        <img class="project-image" src="Projects/{image}" alt='1' on:click={showImage} on:keydown={showImage}> 
+                        <div class='project-image-wrap'>
+                            <img class="project-image" src="Projects/{image}" alt='1' on:click={showImage} on:keydown={showImage}> 
+                        </div>
                     {/each}
                 </div>
 
