@@ -30,11 +30,11 @@
         background-color: #141414;
 
         outline-color: #1f1f1f;
-        outline-width: 5px;
+        outline-width: 3px;
         outline-style: solid;
 
-        width: 600px;
-        height: 820px;
+        width: 450px;
+        height: 615px;
 
         display: flex;
         flex-direction: column;
@@ -45,43 +45,41 @@
 
 
     .profile-picture {
-        margin-top: 75px;
+        margin-top: 56px;
 
-        width: 175px;
-        height: 175px;
+        width: 130px;
+        height: 130px;
 
         border-radius: 50%;
     }
 
     .name {
-        margin-top: 15px;
+        margin-top: 10px;
 
         width: 75%;
         height: auto;
 
         font-family: "Outfit", Sans-serif;
-        font-size: 56px;
+        font-size: 42px;
         text-align: center;
     }
 
     .info {
-        margin-top: 15px;
+        margin-top: 10px;
 
         width: 75%;
         height: auto;
-        font-size: 25px;
+        font-size: 18px;
         
         text-align: center;
     }
 
     .check-it-out {
         margin-top: auto;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
 
         font-family: "Outfit", Sans-serif;
-        font-size: 25px;
-
-        
+        font-size: 18px;
 
         background: none;
         border: none;
@@ -125,10 +123,12 @@
 
     .arrow {
         transform: translateY(3px);
+        width: 20px;
+        height: 20px;
     }
 
     .links {
-        margin-top: 15px;
+        margin-top: 10px;
 
         display: flex;
         gap: 10px;
@@ -142,32 +142,32 @@
     }
 
     .link-icon {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
     }
 
     .projects {
         padding-top: 50px;
 
         width: 100vw;
-        height: 100vh;
+        min-height: 60vh;
+        height: auto;
 
-        border-top: 5px #274f7a solid;
+        border-top: 3px #274f7a solid;
         background-color: #161616;
 
         display: flex;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
     }
 
     .project {
-        width: 60vw;
-        height: 1000px;
+        width: 60%;
 
-
-        /* border-top: 5px #242424 solid;
-        border-bottom: 5px #242424 solid;
-
-        background-color: #1a1a1a; */
+        min-height: 650px;
+        height: auto;
+        overflow: hidden;
     }
 
     .project-title {
@@ -177,42 +177,60 @@
         border-bottom: 3px solid #242424;
 
         font-family: "Outfit", Sans-serif;
-        font-size: 56px;
+        font-size: 42px;
 
+        display: flex;
         /* border: 1px solid red; */
 
     }
 
+    .project-link {
+        width: 40px;
+        height: 40px;
+
+        transform: translateY(13px) rotate(-135deg);
+        margin-left: auto;
+    }
+
+    .project-link img {
+        width: 40px;
+        height: 40px;
+    }
+    
     .project-desc {
         padding-top: 15px;
         padding-bottom: 15px;
 
         font-family: "Outfit", Sans-serif;
-        font-size: 25px;
+        font-size: 18px;
         height: auto;
     }
 
     .project-images {
-
         margin-top: 30px;
 
         display: flex;
         flex-direction: row;
         align-items: center;
 
-        gap: 50px;
-        height: 500px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        
+
+        gap: 38px;
+        height: 375px;
     }
 
     .project-image {
         border: 1px solid #242424;
 
         width: 400px;
+
         height: 100%;
+        max-width: 25%;
 
         object-fit: cover;
-        
-        
+        object-position: left;
     }
 
     /* * {
@@ -220,33 +238,60 @@
     } */
 
 
+
 </style>
 
+<link rel="stylesheet" href="src\styles\fullPhoto.css">
+
 <script>
+    import { quintInOut, quintOut } from 'svelte/easing';
+    import { crossfade } from 'svelte/transition';
+    import { fade } from 'svelte/transition';
+
     function scrollToProjects() {
         const projectsDiv = document.getElementById('projects');
         if (!projectsDiv) return;
         projectsDiv.scrollIntoView({ behavior: 'smooth' });
     }
 
-    function test() {
-        alert("test")
-    }
-
     let projects = {
         "Chess Bot": {
             "Desc": "A Chess bot created using a combination of Selenium and Stockfish.",
-            "Images": ['sample.png', 'sample2.png', 'sample3.png']
-        }
+            "Link": "https://github.com/Sw1ndlerScripts/ChessBot",
+            "Images": ['/ChessBot/chess1.png', '/ChessBot/chess2.png', '/ChessBot/chess3.png', '/ChessBot/chess4.png', '/ChessBot/chess5.png' ]
+        },
     };
 
+    let visible = false;
+    let imgSource = "sample.png"
+
+    function fadeImage() {
+        visible = !visible;
+    }
+
+    function showImage(event) {
+        imgSource = event.target.src;
+        visible = true;
+    }
 
 </script>
 
 
-<div class='about-me-wrap'>
-    <img class='background' src="/background.svg" alt='background'>
+{#if visible}
+    <div class='image-wrapper' on:click={fadeImage} on:keydown={fadeImage} transition:fade={{ duration: 300, easing: quintInOut}}>
+        <div class='image-background'></div>
 
+        <div class='image-container'>
+            <img class='image' alt='' src={imgSource} />
+        </div>
+    </div>
+{/if}
+
+
+
+<img class='background' src="/background.svg" alt='background'>
+
+<div class='about-me-wrap'>
     <div class='about-me'>
         <img class="profile-picture" src='/pfp.png' alt='pfp'>
         
@@ -259,8 +304,8 @@
         </div>
 
         <div class='links'>
-            <a href='https://github.com/Sw1ndlerScripts'> <img class='link-icon' src='/icons/github.svg' alt='github'> </a>
-            <a href='https://discord.com/users/425797455486124032'> <img class='link-icon' src='/icons/discord.svg' alt='discord'> </a>
+            <a href='https://github.com/Sw1ndlerScripts' target="_blank"> <img class='link-icon' src='/icons/github.svg' alt='github'> </a>
+            <a href='https://discord.com/users/425797455486124032' target="_blank"> <img class='link-icon' src='/icons/discord.svg' alt='discord'> </a>
 
         </div>
     
@@ -275,18 +320,18 @@
     
         <div class='project'>
             <div class='project-title'>
-                {projectName}
+                {projectName} <a href={project['Link']} class='project-link' target="_blank"> <img src="/icons/arrow.svg" alt='project-link'> </a>
             </div>
 
             <div class='project-desc'>
-
                 {project["Desc"]}
 
                 <div class='project-images'>
                     {#each project["Images"] as image}
-                        <img class="project-image" src="/{image}" alt='1'> 
+                        <img class="project-image" src="Projects/{image}" alt='1' on:click={showImage} on:keydown={showImage}> 
                     {/each}
                 </div>
+
             </div>
         </div>
 

@@ -1,6 +1,6 @@
 <script>
-    import PhotoGallery from "../../templates/photoGallery.svelte";
-    const photos = ['/sample.png', '/sample2.png', '/sample3.png']
+    import FullPhoto from "../../templates/fullPhoto.svelte";
+    const photo = '/sample.png'
 </script>
 
-<PhotoGallery photos={photos} />
+<FullPhoto photo={photo} />
