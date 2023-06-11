@@ -87,10 +87,7 @@
         padding: 10px;
 
         cursor: pointer;
-
-        animation-duration: 0.3s;
-        animation-timing-function: ease-in-out;
-        animation-fill-mode: forwards;
+        animation: transform 0.3s ease-in-out forwards;
     }
 
     @keyframes shift-up {
@@ -102,7 +99,6 @@
             transform: translateY(-5px);
         }
     }
-
     @keyframes shift-down {
         0% {
             transform: translateY(-5px);
@@ -116,7 +112,6 @@
     .check-it-out:hover {
         animation-name: shift-up;
     }
-
     .check-it-out:not(:hover) {
         animation-name: shift-down;
     }
@@ -146,35 +141,14 @@
         height: 30px;
 
         transition: filter 0.3s ease-in-out;
-    }
-
-    @keyframes brighten {
-        0% {
-            filter: brightness(1);
-        }
-
-        100% {
-            filter: brightness(2);
-        }
-    }
-
-    @keyframes darken {
-        0% {
-            filter: brightness(2);
-        }
-
-        100% {
-            filter: brightness(1);
-        }
+        filter: brightness(1)
     }
 
     .link-icon:hover {
         animation: brighten 0.3s ease-in-out forwards;
+        filter: brightness(2)
     }
 
-    .link-icon:not(:hover) {
-        animation: darken 0.3s ease-in-out forwards;
-    }
     .projects {
         padding-top: 50px;
         padding-bottom: 500px;
