@@ -148,6 +148,7 @@
 
     .projects {
         padding-top: 50px;
+        padding-bottom: 500px;
 
         width: 100vw;
         min-height: 60vh;
@@ -259,6 +260,7 @@
     .project-image {
         border: 1px solid #242424;
         height: 100%;
+        max-width: 600px;
 
         object-fit: cover;
         object-position: left;
@@ -328,17 +330,17 @@
                 "python": "https://www.python.org/",
                 "selenium": "https://www.selenium.dev/",
             },
-            "Images": ['/ChessBot/chess1.png', '/ChessBot/chess2.png', '/ChessBot/chess3.png', '/ChessBot/chess4.png', '/ChessBot/chess5.png' ]
+            "Images": ['ChessBot/chess1.png', 'ChessBot/chess2.png', 'ChessBot/chess3.png', 'ChessBot/chess4.png', 'ChessBot/chess5.png' ]
         },
         "Portfolio": {
-            "Desc": "A Portfolio website I created for my projects, you're looking at it right now",
+            "Desc": "A Portfolio website I created for my projects, you're looking at it right now\nIt uses svelte and is able to dynamically add projects from json",
             "Link": "https://github.com/Sw1ndlerScripts/Portfolio",
             "Icons": {
                 "svelte": "https://svelte.dev/",
                 "javascript": "https://www.javascript.com/",
                 "html5": "https://www.w3schools.com/html/",
             },
-            "Images": []
+            "Images": ['Portfolio/portfolio1.png', 'Portfolio/portfolio2.png']
         }
     };
 
