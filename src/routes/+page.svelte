@@ -345,8 +345,9 @@
     import { quintInOut, quintOut } from 'svelte/easing';
     import { fade } from 'svelte/transition';
 
+    let projectsDiv;
+
     function scrollToProjects() {
-        const projectsDiv = document.getElementById('projects');
         if (!projectsDiv) return;
         projectsDiv.scrollIntoView({ behavior: 'smooth' });
     }
@@ -455,9 +456,8 @@
     </div>
 </div>
 
-<div class='projects' id='projects'>
+<div class='projects' id='projects' bind:this={projectsDiv}>
     {#each Object.entries(projects) as [projectName, project]}
-    
         <div class='project'>
             <div class='project-title'>
                 {projectName} <a href={project['Link']} class='project-link' target="_blank"> <img src="/Icons/arrow.svg" alt='project-link'> </a>
