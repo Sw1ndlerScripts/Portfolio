@@ -144,8 +144,37 @@
     .link-icon {
         width: 30px;
         height: 30px;
+
+        transition: filter 0.3s ease-in-out;
     }
 
+    @keyframes brighten {
+        0% {
+            filter: brightness(1);
+        }
+
+        100% {
+            filter: brightness(2);
+        }
+    }
+
+    @keyframes darken {
+        0% {
+            filter: brightness(2);
+        }
+
+        100% {
+            filter: brightness(1);
+        }
+    }
+
+    .link-icon:hover {
+        animation: brighten 0.3s ease-in-out forwards;
+    }
+
+    .link-icon:not(:hover) {
+        animation: darken 0.3s ease-in-out forwards;
+    }
     .projects {
         padding-top: 50px;
         padding-bottom: 500px;
