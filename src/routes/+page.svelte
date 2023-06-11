@@ -262,6 +262,8 @@
 
         object-fit: cover;
         object-position: left;
+
+        cursor: pointer;
     }
 
     .image-background {
