@@ -340,9 +340,10 @@
             "Desc": "A Portfolio website I created for my projects, you're looking at it right now\nIt uses svelte and is able to dynamically add projects from json",
             "Link": "https://github.com/Sw1ndlerScripts/Portfolio",
             "Icons": {
-                "svelte": "https://svelte.dev/",
-                "javascript": "https://www.javascript.com/",
                 "html5": "https://www.w3schools.com/html/",
+                "css3": "https://www.w3schools.com/css/",
+                "javascript": "https://www.javascript.com/",
+                "svelte": "https://svelte.dev/",
             },
             "Images": ['Portfolio/portfolio1.png', 'Portfolio/portfolio2.png']
         }
@@ -438,7 +439,6 @@
             </div>
 
             <div class='project-desc'>
-                <!-- {project["Desc"]} -->
                 {#each project["Desc"].split('\n') as line}
                     <p>{line}</p>
                 {/each}
@@ -453,7 +453,6 @@
                             on:mouseenter={() => iconMouseEnter(iconName)}
                             on:mouseleave={iconMouseLeave}
                         >
-                            <!-- <img class='icon' src="Icons/{icon["Image"]}" alt={iconName}> -->
                             <i 
                             class={hoveredIcon === iconName ? `devicon-${iconName}-plain devicon colored` : `devicon-${iconName}-plain devicon`}
                             ></i>
@@ -468,9 +467,7 @@
                         </div>
                     {/each}
                 </div>
-
             </div>
         </div>
-
     {/each}
 </div>
