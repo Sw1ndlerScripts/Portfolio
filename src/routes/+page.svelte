@@ -420,13 +420,13 @@
         </div>
 
         <div class='links'>
-            <a href='https://github.com/Sw1ndlerScripts' target="_blank"> <img class='link-icon' src='/Icons/github.svg' alt='github'> </a>
-            <a href='https://discord.com/users/425797455486124032' target="_blank"> <img class='link-icon' src='/Icons/discord.svg' alt='discord'> </a>
+            <a href='https://github.com/Sw1ndlerScripts' target="_blank"> <img class='link-icon' src='Icons/github.svg' alt='github'> </a>
+            <a href='https://discord.com/users/425797455486124032' target="_blank"> <img class='link-icon' src='Icons/discord.svg' alt='discord'> </a>
 
         </div>
     
         <button class='check-it-out' on:click={scrollToProjects}>
-            Check it out <img src="/Icons/arrow.svg" alt='down_arrow' class='arrow'>
+            Check it out <img src="Icons/arrow.svg" alt='down_arrow' class='arrow'>
         </button>
     </div>
 </div>
@@ -435,7 +435,7 @@
     {#each Object.entries(projects) as [projectName, project]}
         <div class='project'>
             <div class='project-title'>
-                {projectName} <a href={project['Link']} class='project-link' target="_blank"> <img src="/Icons/arrow.svg" alt='project-link'> </a>
+                {projectName} <a href={project['Link']} class='project-link' target="_blank"> <img src="Icons/arrow.svg" alt='project-link'> </a>
             </div>
 
             <div class='project-desc'>
