@@ -346,6 +346,17 @@
                 "svelte": "https://svelte.dev/",
             },
             "Images": ['Portfolio/portfolio1.png', 'Portfolio/portfolio2.png']
+        },
+        "Calculator": {
+            "Desc": "A simple calculator I made using svelte in 20 minutes",
+            "Link": "https://sw1ndler.tk/calculator/",
+            "Icons": {
+                "html5": "https://www.w3schools.com/html/",
+                "css3": "https://www.w3schools.com/css/",
+                "javascript": "https://www.javascript.com/",
+                "svelte": "https://svelte.dev/",
+            },
+            "Images": ['Calculator/calculator1.png', 'Calculator/calculator2.png']
         }
     };
 
@@ -422,7 +433,6 @@
         <div class='links'>
             <a href='https://github.com/Sw1ndlerScripts' target="_blank"> <img class='link-icon' src='Icons/github.svg' alt='github'> </a>
             <a href='https://discord.com/users/425797455486124032' target="_blank"> <img class='link-icon' src='Icons/discord.svg' alt='discord'> </a>
-
         </div>
     
         <button class='check-it-out' on:click={scrollToProjects}>
