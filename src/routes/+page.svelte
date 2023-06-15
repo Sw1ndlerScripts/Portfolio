@@ -150,8 +150,8 @@
     }
 
     .projects {
-        padding-top: 50px;
         padding-bottom: 500px;
+        padding-top: 50px;
 
         width: 100vw;
         min-height: 60vh;
@@ -164,10 +164,14 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        row-gap: 50px;
     }
 
     .project {
         width: 60%;
+
+        margin-top: 0px;
 
         min-height: 650px;
         height: auto;
