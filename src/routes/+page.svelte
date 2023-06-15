@@ -246,6 +246,7 @@
 
     .project-images {
         margin-top: 40px;
+        padding-bottom: 10px;
 
         display: flex;
         flex-direction: row;
@@ -253,7 +254,6 @@
 
         overflow-x: scroll;
         overflow-y: hidden;
-        
 
         gap: 20px;
         height: 375px;
@@ -265,7 +265,9 @@
     }
 
     .project-image {
-        border: 1px solid #242424;
+        border: 2px solid #242424;
+        border-radius: 5px;
+
         height: 100%;
         max-width: 600px;
 
