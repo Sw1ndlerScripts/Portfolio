@@ -363,6 +363,14 @@
                 "svelte": "https://svelte.dev/",
             },
             "Images": ['Calculator/calculator1.png', 'Calculator/calculator2.png']
+        },
+        "Scripts": {
+            "Desc": "A collection of roblox scripts I've made",
+            "Link": "https://github.com/Sw1ndlerScripts/RobloxScripts",
+            "Icons": {
+                "lua": "https://www.lua.org/",
+            },
+            "Images": []
         }
     };
 
