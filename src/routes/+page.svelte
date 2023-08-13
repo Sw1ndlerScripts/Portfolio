@@ -322,6 +322,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
 <script>
+    import name from './name.svelte';
+
     import { quintInOut, quintOut } from 'svelte/easing';
     import { fade } from 'svelte/transition';
 
@@ -441,7 +443,7 @@
         </div>
 
         <div class='info'>
-            ( I Code Things )
+            Life Is Roblox
         </div>
 
         <div class='links'>
