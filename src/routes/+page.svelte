@@ -322,9 +322,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
 <script>
-    import name from './name.svelte';
-
-    import { quintInOut, quintOut } from 'svelte/easing';
+    import { quintInOut } from 'svelte/easing';
     import { fade } from 'svelte/transition';
 
     let projectsDiv;
